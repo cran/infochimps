@@ -1,18 +1,18 @@
 conversations <-
-function(screen.name.a,screen.name.b,session,user.id.a=NA,user.id.b=NA) {
+function(screen.name.a,screen.name.b,user.id.a=NA,user.id.b=NA) {
     if(is.na(user.id.a) & is.na(user.id.a)) {
-        conversation.url<-paste(session$base,"conversation.json?user_a_sn=",screen.name.a,"&user_b_sn=",screen.name.b,"&apikey=",session$api.key,sep="")
+        conversation.url<-paste(.InfochimpsEnv$data$base,"conversation.json?user_a_sn=",screen.name.a,"&user_b_sn=",screen.name.b,"&apikey=",.InfochimpsEnv$data$api.key,sep="")
     }
     else {
         if(is.na(user.id.a)==FALSE & is.na(user.id.a)==FALSE) {
-            conversation.url<-paste(session$base,"conversation.json?user_a_id=",user.id.a,"&user_b_id=",user.id.b,"&apikey=",session$api.key,sep="")
+            conversation.url<-paste(.InfochimpsEnv$data$base,"conversation.json?user_a_id=",user.id.a,"&user_b_id=",user.id.b,"&apikey=",.InfochimpsEnv$data$api.key,sep="")
         }
         else {
             if(is.na(user.id.na)) {
-                conversation.url<-paste(session$base,"conversation.json?user_a_sn=",screen.name.a,"&user_b_id=",user.id.b,"&apikey=",session$api.key,sep="")
+                conversation.url<-paste(.InfochimpsEnv$data$base,"conversation.json?user_a_sn=",screen.name.a,"&user_b_id=",user.id.b,"&apikey=",.InfochimpsEnv$data$api.key,sep="")
             }
             else {
-                conversation.url<-paste(session$base,"conversation.json?user_a_id=",user.id.a,"&user_b_sn=",screen.name.b,"&apikey=",session$api.key,sep="")
+                conversation.url<-paste(.InfochimpsEnv$data$base,"conversation.json?user_a_id=",user.id.a,"&user_b_sn=",screen.name.b,"&apikey=",.InfochimpsEnv$data$api.key,sep="")
             }
         }
     }
@@ -33,8 +33,10 @@ function(screen.name.a,screen.name.b,session,user.id.a=NA,user.id.b=NA) {
             reply.to<-sapply(1:nrow(conversations.matrix), function(x) ifelse(conversations.matrix[x,2]=="re", conversations.matrix[x,3], NA))
         }
         conversations.df<-cbind(user.id.a, user.id.b, conversations.matrix[,1], conversations.matrix[,2],reply.to)
-        conversations.df<-as.data.frame(conversations.df)
-        names(conversations.df)<-c("user.id.a","user.id.b","conversation.id","conversation.type","reply.to.id")
+        conversations.df<-as.data.frame(conversations.df,stringsAsFactors=FALSE)
+        conversation.names<-c("user.id.a","user.id.b","conversation.id","conversation.type","reply.to.id")
+        names(conversations.df)<-conversation.names
+        for(c in 1:length(conversation.names)) {conversations.df[,c]<-unlist(conversations.df[,c])}
         return(conversations.df)
     }
     else {
