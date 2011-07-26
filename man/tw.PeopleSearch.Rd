@@ -56,9 +56,9 @@ Drew Conway <drew.conway@nyu.edu>
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-infochimps("your.api.key")
-search.test <- tw.PeopleSearch("R hacks")
-head(search.test)
+# infochimps("your.api.key")
+# search.test <- tw.PeopleSearch("R hacks")
+# head(search.test)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

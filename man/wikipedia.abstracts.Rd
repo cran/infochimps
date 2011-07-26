@@ -47,9 +47,9 @@ Drew Conway <drew.conway@nyu.edu>
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-infochimps("your.api.key")
-wiki.stats <- wikipedia.abstratcs("statistical computing")
-head(wiki.stats)
+# infochimps("your.api.key")
+# wiki.stats <- wikipedia.abstratcs("statistical computing")
+# head(wiki.stats)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

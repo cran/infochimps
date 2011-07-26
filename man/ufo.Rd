@@ -54,9 +54,9 @@ Drew Conway <drew.conway@nyu.edu>
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-infochimps("your.api.key")
-cow.test <- ufo("cow field")
-head(cow.test)
+# infochimps("your.api.key")
+# cow.test <- ufo("cow field")
+# head(cow.test)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
